@@ -12,14 +12,15 @@
 #include <stdarg.h>
 #include <ctype.h>
 #include <errno.h>
+#include <limits.h>
 
-short parse_short(const char* str);
-int parse_int(const char* str);
-long parse_long(const char* str);
+short parse_short(const char* str, int radix);
+int parse_int(const char* str, int radix);
+long parse_long(const char* str, int radix);
 
-unsigned short parse_u_short(const char* str);
-unsigned int parse_u_int(const char* str);
-unsigned long parse_u_long(const char* str);
+unsigned short parse_u_short(const char* str, int radix);
+unsigned int parse_u_int(const char* str, int radix);
+unsigned long parse_u_long(const char* str, int radix);
 
 float parsefloat(const char* str);
 double parsedouble(const char* str);

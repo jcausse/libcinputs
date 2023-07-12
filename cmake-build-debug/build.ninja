@@ -49,12 +49,6 @@ cmake_ninja_workdir = /Users/jcausse/CLionProjects/libcinputs/cmake-build-debug/
 
 build cmake_object_order_depends_target_libcinputs: phony || CMakeFiles/libcinputs.dir
 
-build CMakeFiles/libcinputs.dir/libcinputs.c.o: C_COMPILER__libcinputs_Debug /Users/jcausse/CLionProjects/libcinputs/libcinputs.c || cmake_object_order_depends_target_libcinputs
-  DEP_FILE = CMakeFiles/libcinputs.dir/libcinputs.c.o.d
-  FLAGS = -g -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX13.3.sdk -fcolor-diagnostics -std=gnu11
-  OBJECT_DIR = CMakeFiles/libcinputs.dir
-  OBJECT_FILE_DIR = CMakeFiles/libcinputs.dir
-
 build CMakeFiles/libcinputs.dir/libcinputs_tests.c.o: C_COMPILER__libcinputs_Debug /Users/jcausse/CLionProjects/libcinputs/libcinputs_tests.c || cmake_object_order_depends_target_libcinputs
   DEP_FILE = CMakeFiles/libcinputs.dir/libcinputs_tests.c.o.d
   FLAGS = -g -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX13.3.sdk -fcolor-diagnostics -std=gnu11
@@ -87,7 +81,7 @@ build CMakeFiles/libcinputs.dir/libcinputs_string.c.o: C_COMPILER__libcinputs_De
 #############################################
 # Link the executable libcinputs
 
-build libcinputs: C_EXECUTABLE_LINKER__libcinputs_Debug CMakeFiles/libcinputs.dir/libcinputs.c.o CMakeFiles/libcinputs.dir/libcinputs_tests.c.o CMakeFiles/libcinputs.dir/libcinputs_integers.c.o CMakeFiles/libcinputs.dir/libcinputs_floatingpoint.c.o CMakeFiles/libcinputs.dir/libcinputs_string.c.o
+build libcinputs: C_EXECUTABLE_LINKER__libcinputs_Debug CMakeFiles/libcinputs.dir/libcinputs_tests.c.o CMakeFiles/libcinputs.dir/libcinputs_integers.c.o CMakeFiles/libcinputs.dir/libcinputs_floatingpoint.c.o CMakeFiles/libcinputs.dir/libcinputs_string.c.o
   FLAGS = -g -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX13.3.sdk
   OBJECT_DIR = CMakeFiles/libcinputs.dir
   POST_BUILD = :
