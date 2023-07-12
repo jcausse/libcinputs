@@ -13,7 +13,15 @@
 #include <ctype.h>
 #include <errno.h>
 
-int parseint(const char* str);
+short parse_short(const char* str);
+int parse_int(const char* str);
+long parse_long(const char* str);
+
+unsigned short parse_u_short(const char* str);
+unsigned int parse_u_int(const char* str);
+unsigned long parse_u_long(const char* str);
+
+float parsefloat(const char* str);
 double parsedouble(const char* str);
 
 int getint(const char* msg, ...);

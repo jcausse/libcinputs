@@ -3,4 +3,4 @@ project(libcinputs C)
 
 set(CMAKE_C_STANDARD 11)
 
-add_library(libcinputs libcinputs.h libcinputs.c libcinputs_tests.c)
+add_executable(libcinputs libcinputs.h libcinputs_tests.c libcinputs_integers.c libcinputs_floatingpoint.c libcinputs_string.c)

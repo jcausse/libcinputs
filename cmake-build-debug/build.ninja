@@ -41,7 +41,7 @@ include CMakeFiles/rules.ninja
 
 cmake_ninja_workdir = /Users/jcausse/CLionProjects/libcinputs/cmake-build-debug/
 # =============================================================================
-# Object build statements for STATIC_LIBRARY target libcinputs
+# Object build statements for EXECUTABLE target libcinputs
 
 
 #############################################
@@ -61,22 +61,39 @@ build CMakeFiles/libcinputs.dir/libcinputs_tests.c.o: C_COMPILER__libcinputs_Deb
   OBJECT_DIR = CMakeFiles/libcinputs.dir
   OBJECT_FILE_DIR = CMakeFiles/libcinputs.dir
 
+build CMakeFiles/libcinputs.dir/libcinputs_integers.c.o: C_COMPILER__libcinputs_Debug /Users/jcausse/CLionProjects/libcinputs/libcinputs_integers.c || cmake_object_order_depends_target_libcinputs
+  DEP_FILE = CMakeFiles/libcinputs.dir/libcinputs_integers.c.o.d
+  FLAGS = -g -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX13.3.sdk -fcolor-diagnostics -std=gnu11
+  OBJECT_DIR = CMakeFiles/libcinputs.dir
+  OBJECT_FILE_DIR = CMakeFiles/libcinputs.dir
+
+build CMakeFiles/libcinputs.dir/libcinputs_floatingpoint.c.o: C_COMPILER__libcinputs_Debug /Users/jcausse/CLionProjects/libcinputs/libcinputs_floatingpoint.c || cmake_object_order_depends_target_libcinputs
+  DEP_FILE = CMakeFiles/libcinputs.dir/libcinputs_floatingpoint.c.o.d
+  FLAGS = -g -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX13.3.sdk -fcolor-diagnostics -std=gnu11
+  OBJECT_DIR = CMakeFiles/libcinputs.dir
+  OBJECT_FILE_DIR = CMakeFiles/libcinputs.dir
+
+build CMakeFiles/libcinputs.dir/libcinputs_string.c.o: C_COMPILER__libcinputs_Debug /Users/jcausse/CLionProjects/libcinputs/libcinputs_string.c || cmake_object_order_depends_target_libcinputs
+  DEP_FILE = CMakeFiles/libcinputs.dir/libcinputs_string.c.o.d
+  FLAGS = -g -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX13.3.sdk -fcolor-diagnostics -std=gnu11
+  OBJECT_DIR = CMakeFiles/libcinputs.dir
+  OBJECT_FILE_DIR = CMakeFiles/libcinputs.dir
+
 
 # =============================================================================
-# Link build statements for STATIC_LIBRARY target libcinputs
+# Link build statements for EXECUTABLE target libcinputs
 
 
 #############################################
-# Link the static library liblibcinputs.a
+# Link the executable libcinputs
 
-build liblibcinputs.a: C_STATIC_LIBRARY_LINKER__libcinputs_Debug CMakeFiles/libcinputs.dir/libcinputs.c.o CMakeFiles/libcinputs.dir/libcinputs_tests.c.o
-  ARCH_FLAGS = -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX13.3.sdk
-  LANGUAGE_COMPILE_FLAGS = -g
+build libcinputs: C_EXECUTABLE_LINKER__libcinputs_Debug CMakeFiles/libcinputs.dir/libcinputs.c.o CMakeFiles/libcinputs.dir/libcinputs_tests.c.o CMakeFiles/libcinputs.dir/libcinputs_integers.c.o CMakeFiles/libcinputs.dir/libcinputs_floatingpoint.c.o CMakeFiles/libcinputs.dir/libcinputs_string.c.o
+  FLAGS = -g -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX13.3.sdk
   OBJECT_DIR = CMakeFiles/libcinputs.dir
   POST_BUILD = :
   PRE_LINK = :
-  TARGET_FILE = liblibcinputs.a
-  TARGET_PDB = libcinputs.a.dbg
+  TARGET_FILE = libcinputs
+  TARGET_PDB = libcinputs.dbg
 
 
 #############################################
@@ -104,8 +121,6 @@ build rebuild_cache: phony CMakeFiles/rebuild_cache.util
 # =============================================================================
 # Target aliases.
 
-build libcinputs: phony liblibcinputs.a
-
 # =============================================================================
 # Folder targets.
 
@@ -114,7 +129,7 @@ build libcinputs: phony liblibcinputs.a
 #############################################
 # Folder: /Users/jcausse/CLionProjects/libcinputs/cmake-build-debug
 
-build all: phony liblibcinputs.a
+build all: phony libcinputs
 
 # =============================================================================
 # Built-in targets
