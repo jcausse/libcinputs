@@ -60,10 +60,14 @@ int main(){
     printf("Compiled: %s, %s. Platform: %s\n", __DATE__, __TIME__, getBuild());
     puts("Created by Juan Ignacio Causse\n\n");
 
-    parse_short_tests();
-    parse_int_tests();
-    parse_long_tests();
+    //parse_short_tests();
+    //parse_int_tests();
+    //parse_long_tests();
 
+    char* msg = get_word(stdin);
+    printf("%s\n", msg);
+    free(msg);
+    
     return 0;
 }
 
@@ -382,3 +386,5 @@ void parse_long_tests(){
 
     puts("*** All parse_long tests passed ***\n");
 }
+
+

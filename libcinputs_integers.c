@@ -4,6 +4,7 @@
 #define STRTOL_MAX_RADIX 36
 
 enum datatypes {_GET_TYPE_SHORT, _GET_TYPE_INT, _GET_TYPE_LONG};
+
 static long get_integer_helper(enum datatypes type);
 
 
@@ -79,7 +80,7 @@ long getlong(const char* msg, ...) {
         vprintf(msg, ap);
         va_end(ap);
     }
-    return get_integer_helper(_GET_TYPE_INT);
+    return get_integer_helper(_GET_TYPE_LONG);
 }
 
 static long get_integer_helper(enum datatypes type){

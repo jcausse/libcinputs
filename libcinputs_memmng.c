@@ -1,15 +1,6 @@
 #include "libcinputs.h"
 
-typedef struct mem_alloc_unit{
-    unsigned long size;
-    void* addr;
-    struct mem_alloc_unit * next;
-} mem_alloc_unit;
-
-typedef struct mem_alloc_unit * mem_unit;
-
 static bool _init_done = false;
-mem_unit _first_node = NULL;
 
 void libcinputs_init(){
     if (_init_done){
