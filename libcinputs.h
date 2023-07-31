@@ -40,6 +40,6 @@ double getdouble(const char* msg, ...); //TODO
 char* getstring(const char* msg, ...); //TODO
 
 // UTILS
-char* get_word(FILE* stream)
+char* get_word(FILE* stream);
 
 #endif //LIBCINPUTS_LIBCINPUTS_H
