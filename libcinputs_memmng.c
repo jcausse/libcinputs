@@ -1,7 +1,3 @@
-//
-// Created by Juani on 7/16/2023.
-//
-
 #include "libcinputs.h"
 
 typedef struct mem_alloc_unit{
