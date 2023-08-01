@@ -54,20 +54,24 @@ const char *getBuild() { //Get current architecture, detectx nearly every archit
 void parse_short_tests();
 void parse_int_tests();
 void parse_long_tests();
+void get_short_tests();
+void get_int_tests();
+void get_long_tests();
 
 int main(){
     printf("LIB C INPUTS version %s tests\n", LIBCINPUTS_VERSION);
     printf("Compiled: %s, %s. Platform: %s\n", __DATE__, __TIME__, getBuild());
     puts("Created by Juan Ignacio Causse\n\n");
 
-    //parse_short_tests();
-    //parse_int_tests();
-    //parse_long_tests();
+    parse_short_tests();
+    parse_int_tests();
+    parse_long_tests();
 
-    char* msg = get_word(stdin);
-    printf("%s\n", msg);
-    free(msg);
-    
+    get_short_tests();
+    get_int_tests();
+    get_long_tests();
+
+
     return 0;
 }
 
@@ -133,6 +137,10 @@ void parse_short_tests(){
     /*** INVALID RADIX TESTS ***/
 
     assert(parse_short("12345", -1) == 0);
+    assert(errno == EINVAL);
+    printf("Test %02d passed\n", ++i);
+
+    assert(parse_short("12345", 1) == 0);
     assert(errno == EINVAL);
     printf("Test %02d passed\n", ++i);
 
@@ -213,6 +221,10 @@ void parse_int_tests(){
     /*** INVALID RADIX TESTS ***/
 
     assert(parse_int("12345", -1) == 0);
+    assert(errno == EINVAL);
+    printf("Test %02d passed\n", ++i);
+
+    assert(parse_int("12345", 1) == 0);
     assert(errno == EINVAL);
     printf("Test %02d passed\n", ++i);
 
@@ -356,6 +368,10 @@ void parse_long_tests(){
     assert(errno == EINVAL);
     printf("Test %02d passed\n", ++i);
 
+    assert(parse_long("12345", 1) == 0);
+    assert(errno == EINVAL);
+    printf("Test %02d passed\n", ++i);
+
     assert(parse_long("12345", 37) == 0);
     assert(errno == EINVAL);
     printf("Test %02d passed\n", ++i);
@@ -387,4 +403,26 @@ void parse_long_tests(){
     puts("*** All parse_long tests passed ***\n");
 }
 
+void get_short_tests(){
+    puts("*** get_short ***");
+    int i = 0;
 
+
+    puts("*** All get_short tests passed ***\n");
+}
+
+void get_int_tests(){
+    puts("*** get_int ***");
+    int i = 0;
+
+
+    puts("*** All get_int tests passed ***\n");
+}
+
+void get_long_tests(){
+    puts("*** get_long ***");
+    int i = 0;
+
+
+    puts("*** All get_long tests passed ***\n");
+}

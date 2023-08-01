@@ -1,11 +1,12 @@
 #include "libcinputs.h"
 
-#define STRTOL_MIN_RADIX 0
+#define STRTOL_MIN_RADIX 2
 #define STRTOL_MAX_RADIX 36
 
-enum datatypes {_GET_TYPE_SHORT, _GET_TYPE_INT, _GET_TYPE_LONG};
+enum data_types {_GET_TYPE_SHORT, _GET_TYPE_INT, _GET_TYPE_LONG};
 
-static long get_integer_helper(enum datatypes type);
+static long get_integer_helper(enum data_types type);
+static inline void clear_stdin(){ int c; }
 
 
 /***************************************************************************************************/
@@ -29,7 +30,7 @@ int parse_int(const char* str, int radix){
 }
 
 long parse_long(const char* str, int radix){
-    if (str == NULL || radix < STRTOL_MIN_RADIX || radix > STRTOL_MAX_RADIX){
+    if (str == NULL || (radix != 0 && (radix < STRTOL_MIN_RADIX || radix > STRTOL_MAX_RADIX))){
         errno = EINVAL;
         return 0L;
     }
@@ -53,7 +54,7 @@ long parse_long(const char* str, int radix){
 
 /***************************************************************************************************/
 
-short getshort(const char* msg, ...){
+short get_short(const char* msg, ...){
     if (msg != NULL && strlen(msg) > 0){
         va_list ap;
         va_start(ap, msg);
@@ -63,7 +64,7 @@ short getshort(const char* msg, ...){
     return (short) get_integer_helper(_GET_TYPE_SHORT);
 }
 
-int getint(const char* msg, ...){
+int get_int(const char* msg, ...){
     if (msg != NULL && strlen(msg) > 0){
         va_list ap;
         va_start(ap, msg);
@@ -73,7 +74,7 @@ int getint(const char* msg, ...){
     return (int) get_integer_helper(_GET_TYPE_INT);
 }
 
-long getlong(const char* msg, ...) {
+long get_long(const char* msg, ...) {
     if (msg != NULL && strlen(msg) > 0){
         va_list ap;
         va_start(ap, msg);
@@ -83,6 +84,22 @@ long getlong(const char* msg, ...) {
     return get_integer_helper(_GET_TYPE_LONG);
 }
 
-static long get_integer_helper(enum datatypes type){
-    return 0;
+static long get_integer_helper(enum data_types type){
+    errno = 0;
+
+    char num_str[30] = {0};
+    int read = scanf("%29s", num_str);
+    if (read != 1){
+        errno = EINVAL;
+        return 0L;
+    }
+
+    long res = 0;
+    switch (type){
+        case _GET_TYPE_SHORT: res = parse_short(num_str, 0); break;
+        case _GET_TYPE_INT: res = parse_int(num_str, 0); break;
+        case _GET_TYPE_LONG: res = parse_long(num_str, 0); break;
+    }
+
+    return res;
 }

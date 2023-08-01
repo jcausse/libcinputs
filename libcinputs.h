@@ -18,28 +18,56 @@
 #include <errno.h>
 #include <limits.h>
 
-// LIBCINPUTS MEMORY MANAGER
+/************************************* MEMORY MANAGER *************************************/
 void libcinputs_init(); //TODO
 void libcinputs_cleanup(); //TODO
 
-// INTEGERS
+/************************************* INTEGERS *************************************/
+
+/*
+ * These functions parse integers (of types short, int, or long) stored as
+ * NULL-terminated strings in the str parameter.
+ * The radix parameter allows parsing integers in different bases.
+ * Radix can be any number between 2 and 36.
+ * If radix equals 0, these functions will automatically detect decimal,
+ * octal (with a leading zero) or hexadecimal (starting with 0x) numbers
+ * and convert them.
+ * If an error occurs, zero is returned and errno is set accordingly:
+ * errno is set to EINVAL if any of the following happens:
+ *  * str is NULL or an empty string
+ *  * radix is less than 0, greater than 36, or equals 1
+ *  * No number could be found (e.g. str is "Hello" or "abc123" and radix is 0)
+ * errno is set to ERANGE if the converted number is out of the valid range for
+ * the given integer type (e.g. parse_int detects a number greater than INT_MAX)
+ */
 short parse_short(const char* str, int radix);
 int parse_int(const char* str, int radix);
 long parse_long(const char* str, int radix);
-short getshort(const char* msg, ...); //TODO
-int getint(const char* msg, ...); //TODO
-long getlong(const char* msg, ...); //TODO
 
-// FLOATING POINT
-float parsefloat(const char* str); //TODO
-double parsedouble(const char* str); //TODO
-float getfloat(const char* msg, ...); //TODO
-double getdouble(const char* msg, ...); //TODO
+/*
+ * These functions read integers from standard input
+ * They receive a message format string and variable arguments, which are used to
+ * print a message to standard output before reading from stdin. The arguments are
+ * used in the same way as in printf. If msg_fmt is NULL or an empty string, no
+ * message is shown and any other argument is ignored.
+ * If no number could be found, 0 is returned and errno is set to EINVAL
+ * If the entered number is out of range for the given type, 0 is returned and
+ * errno is set to ERANGE
+ */
+short get_short(const char* msg_fmt, ...);
+int get_int(const char* msg_fmt, ...);
+long get_long(const char* msg_fmt, ...);
 
-// STRINGS
-char* getstring(const char* msg, ...); //TODO
+/************************************* FLOATING POINT *************************************/
+float parse_float(const char* str); //TODO
+double parse_double(const char* str); //TODO
+float get_float(const char* msg, ...); //TODO
+double get_double(const char* msg, ...); //TODO
 
-// UTILS
+/************************************* STRINGS *************************************/
+char* get_string(const char* msg, ...); //TODO
+
+/************************************* UTILITIES *************************************/
 char* get_word(FILE* stream);
 
 #endif //LIBCINPUTS_LIBCINPUTS_H

@@ -23,7 +23,7 @@ char* get_word(FILE* stream){
         }
         else if(!isspace(chr)){ // Ignorar los espacios adicionales al comienzo si no se encontro ningun caracter
             foundchr = 1;
-            wrd[index++] = (unsigned char) chr;
+            wrd[index++] = (char) chr;
             if (index % STR_BLOCK == 0){        // Incrementar el tamaño del string en un bloque al utilizar todo
                 char* wrd_aux = realloc(wrd, (index + STR_BLOCK) * sizeof(char)); // el espacio previamente reservado
                 if (!wrd_aux){
