@@ -3,10 +3,13 @@
 #define STRTOL_MIN_RADIX 2
 #define STRTOL_MAX_RADIX 36
 
-enum data_types {_GET_TYPE_SHORT, _GET_TYPE_INT, _GET_TYPE_LONG};
+enum data_types {GET_TYPE_SHORT, GET_TYPE_INT, GET_TYPE_LONG};
 
 static long get_integer_helper(enum data_types type);
-static inline void clear_stdin(){ int c; }
+static inline void clear_stdin(){
+    int _rd;
+    while ((_rd = getchar()) && _rd != '\n' && _rd != EOF);
+}
 
 
 /***************************************************************************************************/
@@ -61,7 +64,7 @@ short get_short(const char* msg, ...){
         vprintf(msg, ap);
         va_end(ap);
     }
-    return (short) get_integer_helper(_GET_TYPE_SHORT);
+    return (short) get_integer_helper(GET_TYPE_SHORT);
 }
 
 int get_int(const char* msg, ...){
@@ -71,7 +74,7 @@ int get_int(const char* msg, ...){
         vprintf(msg, ap);
         va_end(ap);
     }
-    return (int) get_integer_helper(_GET_TYPE_INT);
+    return (int) get_integer_helper(GET_TYPE_INT);
 }
 
 long get_long(const char* msg, ...) {
@@ -81,7 +84,7 @@ long get_long(const char* msg, ...) {
         vprintf(msg, ap);
         va_end(ap);
     }
-    return get_integer_helper(_GET_TYPE_LONG);
+    return get_integer_helper(GET_TYPE_LONG);
 }
 
 static long get_integer_helper(enum data_types type){
@@ -89,6 +92,8 @@ static long get_integer_helper(enum data_types type){
 
     char num_str[30] = {0};
     int read = scanf("%29s", num_str);
+    clear_stdin();
+
     if (read != 1){
         errno = EINVAL;
         return 0L;
@@ -96,9 +101,9 @@ static long get_integer_helper(enum data_types type){
 
     long res = 0;
     switch (type){
-        case _GET_TYPE_SHORT: res = parse_short(num_str, 0); break;
-        case _GET_TYPE_INT: res = parse_int(num_str, 0); break;
-        case _GET_TYPE_LONG: res = parse_long(num_str, 0); break;
+        case GET_TYPE_SHORT: res = parse_short(num_str, 0); break;
+        case GET_TYPE_INT: res = parse_int(num_str, 0); break;
+        case GET_TYPE_LONG: res = parse_long(num_str, 0); break;
     }
 
     return res;

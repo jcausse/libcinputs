@@ -75,6 +75,8 @@ int main(){
     return 0;
 }
 
+/************************************* INTEGERS *************************************/
+
 void parse_short_tests(){
     puts("*** parse_short ***");
     int i = 0;
@@ -407,6 +409,53 @@ void get_short_tests(){
     puts("*** get_short ***");
     int i = 0;
 
+    assert(get_short(NULL) == 123);
+    assert(errno == 0);
+    printf("Test %02d passed\n", ++i);
+
+    assert(get_short(NULL) == 456);
+    assert(errno == 0);
+    printf("Test %02d passed\n", ++i);
+
+    assert(get_short(NULL) == 789);
+    assert(errno == 0);
+    printf("Test %02d passed\n", ++i);
+
+    assert(get_short(NULL) == 32767);
+    assert(errno == 0);
+    printf("Test %02d passed\n", ++i);
+
+    assert(get_short(NULL) == 0);
+    assert(errno == ERANGE);
+    printf("Test %02d passed\n", ++i);
+
+    assert(get_short(NULL) == -32768);
+    assert(errno == 0);
+    printf("Test %02d passed\n", ++i);
+
+    assert(get_short(NULL) == 0);
+    assert(errno == ERANGE);
+    printf("Test %02d passed\n", ++i);
+
+    assert(get_short(NULL) == 0);
+    assert(errno == EINVAL);
+    printf("Test %02d passed\n", ++i);
+
+    assert(get_short(NULL) == 0);
+    assert(errno == EINVAL);
+    printf("Test %02d passed\n", ++i);
+
+    assert(get_short(NULL) == 15);
+    assert(errno == 0);
+    printf("Test %02d passed\n", ++i);
+
+    assert(get_short(NULL) == 0);
+    assert(errno == EINVAL);
+    printf("Test %02d passed\n", ++i);
+
+    assert(get_short(NULL) == 0);
+    assert(errno == 0);
+    printf("Test %02d passed\n", ++i);
 
     puts("*** All get_short tests passed ***\n");
 }
@@ -415,6 +464,29 @@ void get_int_tests(){
     puts("*** get_int ***");
     int i = 0;
 
+    assert(get_int(NULL) == 123);
+    assert(errno == 0);
+    printf("Test %02d passed\n", ++i);
+
+    assert(get_int(NULL) == INT_MAX);
+    assert(errno == 0);
+    printf("Test %02d passed\n", ++i);
+
+    assert(get_int(NULL) == 0);
+    assert(errno == ERANGE);
+    printf("Test %02d passed\n", ++i);
+
+    assert(get_int(NULL) == INT_MIN);
+    assert(errno == 0);
+    printf("Test %02d passed\n", ++i);
+
+    assert(get_int(NULL) == 0);
+    assert(errno == ERANGE);
+    printf("Test %02d passed\n", ++i);
+
+    assert(get_int(NULL) == 0);
+    assert(errno == 0);
+    printf("Test %02d passed\n", ++i);
 
     puts("*** All get_int tests passed ***\n");
 }
@@ -423,6 +495,29 @@ void get_long_tests(){
     puts("*** get_long ***");
     int i = 0;
 
+    assert(get_long(NULL) == 123);
+    assert(errno == 0);
+    printf("Test %02d passed\n", ++i);
+
+    assert(get_long(NULL) == LONG_MAX);
+    assert(errno == 0);
+    printf("Test %02d passed\n", ++i);
+
+    assert(get_long(NULL) == 0);
+    assert(errno == ERANGE);
+    printf("Test %02d passed\n", ++i);
+
+    assert(get_long(NULL) == LONG_MIN);
+    assert(errno == 0);
+    printf("Test %02d passed\n", ++i);
+
+    assert(get_long(NULL) == 0);
+    assert(errno == ERANGE);
+    printf("Test %02d passed\n", ++i);
+
+    assert(get_long(NULL) == 0);
+    assert(errno == 0);
+    printf("Test %02d passed\n", ++i);
 
     puts("*** All get_long tests passed ***\n");
 }

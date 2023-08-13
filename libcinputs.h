@@ -19,6 +19,7 @@
 #include <limits.h>
 
 /************************************* MEMORY MANAGER *************************************/
+
 void libcinputs_init(); //TODO
 void libcinputs_cleanup(); //TODO
 
@@ -59,15 +60,18 @@ int get_int(const char* msg_fmt, ...);
 long get_long(const char* msg_fmt, ...);
 
 /************************************* FLOATING POINT *************************************/
+
 float parse_float(const char* str); //TODO
 double parse_double(const char* str); //TODO
 float get_float(const char* msg, ...); //TODO
 double get_double(const char* msg, ...); //TODO
 
 /************************************* STRINGS *************************************/
+
 char* get_string(const char* msg, ...); //TODO
 
 /************************************* UTILITIES *************************************/
+
 char* get_word(FILE* stream);
 
 #endif //LIBCINPUTS_LIBCINPUTS_H
