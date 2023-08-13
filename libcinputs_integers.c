@@ -3,14 +3,13 @@
 #define STRTOL_MIN_RADIX 2
 #define STRTOL_MAX_RADIX 36
 
-enum data_types {GET_TYPE_SHORT, GET_TYPE_INT, GET_TYPE_LONG};
+enum integer_data_types {GET_TYPE_SHORT, GET_TYPE_INT, GET_TYPE_LONG};
 
-static long get_integer_helper(enum data_types type);
+static long get_integer_helper(enum integer_data_types type);
 static inline void clear_stdin(){
     int _rd;
     while ((_rd = getchar()) && _rd != '\n' && _rd != EOF);
 }
-
 
 /***************************************************************************************************/
 
@@ -87,7 +86,7 @@ long get_long(const char* msg, ...) {
     return get_integer_helper(GET_TYPE_LONG);
 }
 
-static long get_integer_helper(enum data_types type){
+static long get_integer_helper(enum integer_data_types type){
     errno = 0;
 
     char num_str[30] = {0};
@@ -99,7 +98,7 @@ static long get_integer_helper(enum data_types type){
         return 0L;
     }
 
-    long res = 0;
+    long res;
     switch (type){
         case GET_TYPE_SHORT: res = parse_short(num_str, 0); break;
         case GET_TYPE_INT: res = parse_int(num_str, 0); break;
