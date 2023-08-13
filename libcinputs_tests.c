@@ -2,7 +2,7 @@
 // Created by Juan Causse on 12/07/2023.
 //
 
-#include "libcinputs.h"
+#include "src/libcinputs.h"
 #include <assert.h>
 
 const char *getBuild() { //Get current architecture, detectx nearly every architecture. Coded by Freak
