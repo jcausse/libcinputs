@@ -9,6 +9,14 @@
 
 #define LIBCINPUTS_VERSION "0.1"
 
+/*
+ * By changing these values, the threshold used to consider two floating-point numbers as equal can be customized.
+ * If the difference between them is strictly less than the corresponding delta for the data type,
+ * they are considered equal. If the difference equals delta, they are NOT considered equal.
+ */
+#define DELTA_FLOAT     1e-6    // Threshold used in compare_float
+#define DELTA_DOUBLE    1e-12   // Threshold used in compare_double
+
 #include <stdio.h>
 #include <stdbool.h>
 #include <stdlib.h>
@@ -61,8 +69,21 @@ long get_long(const char* msg_fmt, ...);
 
 /************************************* FLOATING POINT *************************************/
 
+/*
+ * These functions compare two floating point values.
+ * Return values:
+ *  * -1 if x is less than y
+ *  * 0 if x equals y
+ *  * 1 if x is greater than y
+ * Note that x and y are considered equal if the absolute value of the difference between them
+ * is less (and not equal) than a delta value that is determined for each data type.
+ */
+int compare_float(float x, float y);
+int compare_double(double x, double y);
+
 float parse_float(const char* str); //TODO
 double parse_double(const char* str); //TODO
+
 float get_float(const char* msg, ...); //TODO
 double get_double(const char* msg, ...); //TODO
 
