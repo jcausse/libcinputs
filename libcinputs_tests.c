@@ -57,6 +57,8 @@ void parse_long_tests();
 void get_short_tests();
 void get_int_tests();
 void get_long_tests();
+void compare_float_tests();
+void compare_double_tests();
 
 int main(){
     printf("LIB C INPUTS version %s tests\n", LIBCINPUTS_VERSION);
@@ -71,6 +73,8 @@ int main(){
     get_int_tests();
     get_long_tests();
 
+    compare_float_tests();
+    compare_double_tests();
 
     return 0;
 }
@@ -520,4 +524,78 @@ void get_long_tests(){
     printf("Test %02d passed\n", ++i);
 
     puts("*** All get_long tests passed ***\n");
+}
+
+void compare_float_tests(){
+    puts("*** compare_float ***");
+    int i = 0;
+
+    assert(compare_float(1.0f, 1.0f) == 0);
+    printf("Test %02d passed\n", ++i);
+
+    assert(compare_float(0.1f, 0.1f) == 0);
+    printf("Test %02d passed\n", ++i);
+
+    assert(compare_float(2.0f, 1.0f) == 1);
+    printf("Test %02d passed\n", ++i);
+
+    assert(compare_float(1.0f, 2.0f) == -1);
+    printf("Test %02d passed\n", ++i);
+
+    assert(compare_float(0.1f + 0.2f, 0.3f) == 0);
+    printf("Test %02d passed\n", ++i);
+
+    assert(compare_float(0.000000001 + 0.000000002, 0.000000003) == 0);
+    printf("Test %02d passed\n", ++i);
+
+    assert(compare_float(0.1f + 1e-6f, 0.1f) == 1);
+    printf("Test %02d passed\n", ++i);
+
+    assert(compare_float(0.1f, 0.1f + 1e-6f) == -1);
+    printf("Test %02d passed\n", ++i);
+
+    assert(compare_float(0.1f + 1e-7f, 0.1f) == 0);
+    printf("Test %02d passed\n", ++i);
+
+    assert(compare_float(0.1f, 0.1f + 1e-7f) == 0);
+    printf("Test %02d passed\n", ++i);
+
+    puts("*** All compare_float tests passed ***\n");
+}
+
+void compare_double_tests(){
+    puts("*** compare_double ***");
+    int i = 0;
+
+    assert(compare_double(1.0, 1.0) == 0);
+    printf("Test %02d passed\n", ++i);
+
+    assert(compare_double(0.1, 0.1) == 0);
+    printf("Test %02d passed\n", ++i);
+
+    assert(compare_double(2.0, 1.0) == 1);
+    printf("Test %02d passed\n", ++i);
+
+    assert(compare_double(1.0, 2.0) == -1);
+    printf("Test %02d passed\n", ++i);
+
+    assert(compare_double(0.1 + 0.2, 0.3) == 0);
+    printf("Test %02d passed\n", ++i);
+
+    assert(compare_double(0.000000000001 + 0.000000000002, 0.000000000003) == 0);
+    printf("Test %02d passed\n", ++i);
+
+    assert(compare_double(0.1 + 1e-12, 0.1) == 1);
+    printf("Test %02d passed\n", ++i);
+
+    assert(compare_double(0.1, 0.1 + 1e-12) == -1);
+    printf("Test %02d passed\n", ++i);
+
+    assert(compare_double(0.1 + 1e-13, 0.1) == 0);
+    printf("Test %02d passed\n", ++i);
+
+    assert(compare_double(0.1, 0.1 + 1e-13) == 0);
+    printf("Test %02d passed\n", ++i);
+
+    puts("*** All compare_double tests passed ***\n");
 }
