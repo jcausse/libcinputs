@@ -76,6 +76,8 @@ int main(){
     compare_float_tests();
     compare_double_tests();
 
+    puts("************* ALL TESTS PASSED *************")
+
     return 0;
 }
 
