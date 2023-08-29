@@ -81,15 +81,33 @@ long get_long(const char* msg_fmt, ...);
 int compare_float(float x, float y);
 int compare_double(double x, double y);
 
-float parse_float(const char* str); //TODO
-double parse_double(const char* str); //TODO
+/*
+ * These functions parse floating point numbers (of types float, double or long double) stored as
+ * NULL-terminated strings in the str parameter.
+ * If an error occurs, zero is returned and errno is set accordingly:
+ * errno is set to EINVAL if any of the following happens:
+ *  * str is NULL or an empty string
+ *  * No number could be found (e.g. str is "Hello" or "abc123")
+ * errno is set to ERANGE if the correct value would cause overflow or underflow.
+ */
+float parse_float(const char* str);
+double parse_double(const char* str);
+long double parse_long_double(const char* str);
 
-float get_float(const char* msg, ...); //TODO
-double get_double(const char* msg, ...); //TODO
+/*
+ * These functions read floating point numbers from standard input
+ * They receive a message format string and variable arguments, which are used to
+ * print a message to standard output before reading from stdin. The arguments are
+ * used in the same way as in printf. If msg_fmt is NULL or an empty string, no
+ * message is shown and any other argument is ignored.
+ * If no number could be found, 0 is returned and errno is set to EINVAL
+ */
+float get_float(const char* msg_fmt, ...);
+double get_double(const char* msg_fmt, ...);
 
 /************************************* STRINGS *************************************/
 
-char* get_string(const char* msg, ...); //TODO
+char* get_string(const char* msg_fmt, ...); //TODO
 
 /************************************* UTILITIES *************************************/
 

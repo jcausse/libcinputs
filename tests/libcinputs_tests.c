@@ -54,11 +54,22 @@ const char *getBuild() { //Get current architecture, detectx nearly every archit
 void parse_short_tests();
 void parse_int_tests();
 void parse_long_tests();
+
 void get_short_tests();
 void get_int_tests();
 void get_long_tests();
+
+void parse_float_tests();
+void parse_double_tests();
+void parse_long_double_tests();
+
+void get_float_tests();
+void get_double_tests();
+
 void compare_float_tests();
 void compare_double_tests();
+
+
 
 int main(){
     printf("LIB C INPUTS version %s tests\n", LIBCINPUTS_VERSION);
@@ -73,10 +84,17 @@ int main(){
     get_int_tests();
     get_long_tests();
 
+    parse_float_tests();
+    parse_double_tests();
+    parse_long_double_tests();
+
+    get_float_tests();
+    get_double_tests();
+
     compare_float_tests();
     compare_double_tests();
 
-    puts("************* ALL TESTS PASSED *************")
+    puts("************* ALL TESTS PASSED *************");
 
     return 0;
 }
@@ -528,6 +546,41 @@ void get_long_tests(){
     puts("*** All get_long tests passed ***\n");
 }
 
+/*TODO*/ void parse_float_tests(){
+    puts("*** parse_float ***");
+    int i = 0;
+
+    puts("*** All parse_float tests passed ***\n");
+}
+
+/*TODO*/ void parse_double_tests(){
+    puts("*** parse_double ***");
+    int i = 0;
+
+    puts("*** All parse_double tests passed ***\n");
+}
+
+/*TODO*/ void parse_long_double_tests(){
+    puts("*** parse_long_double ***");
+    int i = 0;
+
+    puts("*** All parse_long_double tests passed ***\n");
+}
+
+/*TODO*/ void get_float_tests(){
+    puts("*** get_float ***");
+    int i = 0;
+
+    puts("*** All get_float tests passed ***\n");
+}
+
+/*TODO*/ void get_double_tests(){
+    puts("*** get_double ***");
+    int i = 0;
+
+    puts("*** All get_double tests passed ***\n");
+}
+
 void compare_float_tests(){
     puts("*** compare_float ***");
     int i = 0;
@@ -601,3 +654,4 @@ void compare_double_tests(){
 
     puts("*** All compare_double tests passed ***\n");
 }
+

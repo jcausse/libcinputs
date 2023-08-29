@@ -1,15 +1,63 @@
 #include "libcinputs.h"
 
+enum floating_point_data_types {TYPE_FLOAT, TYPE_DOUBLE, TYPE_LONG_DOUBLE};
+
+static void parse_floating_point (const char* str, void* result, enum floating_point_data_types type);
 static int compare_floating_point_helper(double x, double y, double delta);
 
 /***************************************************************************************************/
 
 float parse_float(const char* str){
-    return 0.0f;
+    float res;
+    parse_floating_point(str, (void*) &res, TYPE_FLOAT);
+    if (errno != 0){
+        res = 0.0f;
+    }
+    return res;
 }
 
 double parse_double(const char* str){
-    return 0.0;
+    double res;
+    parse_floating_point(str, (void*) &res, TYPE_DOUBLE);
+    if (errno != 0){
+        res = 0.0;
+    }
+    return res;
+}
+
+long double parse_long_double(const char* str){
+    long double res;
+    parse_floating_point(str, (void*) &res, TYPE_LONG_DOUBLE);
+    if (errno != 0){
+        res = 0.0l;
+    }
+    return res;
+}
+
+static void parse_floating_point (const char* str, void* result, enum floating_point_data_types type){
+    if (str == NULL){
+        errno = EINVAL;
+        return;
+    }
+
+    errno = 0;
+    char* end;
+
+    switch (type){
+        case TYPE_FLOAT:
+            *((float*) result) = strtof(str, &end);
+            break;
+        case TYPE_DOUBLE:
+            *((double*) result) = strtod(str, &end);
+            break;
+        case TYPE_LONG_DOUBLE:
+            *((long double*) result) = strtold(str, &end);
+            break;
+    }
+
+    if (end == str) {
+        errno = EINVAL;
+    }
 }
 
 /***************************************************************************************************/
