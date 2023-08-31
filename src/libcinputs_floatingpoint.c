@@ -3,7 +3,7 @@
 enum floating_point_data_types {TYPE_FLOAT, TYPE_DOUBLE, TYPE_LONG_DOUBLE};
 
 static void parse_floating_point (const char* str, void* result, enum floating_point_data_types type);
-static int compare_floating_point_helper(double x, double y, double delta);
+static int compare_floating_point_helper(long double x, long double y, long double delta);
 
 /***************************************************************************************************/
 
@@ -103,8 +103,12 @@ int compare_double(double x, double y){
     return compare_floating_point_helper(x, y, DELTA_DOUBLE);
 }
 
-static int compare_floating_point_helper(double x, double y, double delta){
-    double diff = x - y;
+int compare_long_double(long double x, long double y){
+    return compare_floating_point_helper(x, y, DELTA_LONG_DOUBLE);
+}
+
+static int compare_floating_point_helper(long double x, long double y, long double delta){
+    long double diff = x - y;
     bool y_is_greater = diff < 0;
 
     // If y is greater than x, y_is_greater will be true, and the function will return -1 if the difference is greater than or equal to delta.

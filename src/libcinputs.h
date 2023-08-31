@@ -14,8 +14,9 @@
  * If the difference between them is strictly less than the corresponding delta for the data type,
  * they are considered equal. If the difference equals delta, they are NOT considered equal.
  */
-#define DELTA_FLOAT     1e-6    // Threshold used in compare_float
-#define DELTA_DOUBLE    1e-12   // Threshold used in compare_double
+#define DELTA_FLOAT         1e-6    // Threshold used in compare_float
+#define DELTA_DOUBLE        1e-12   // Threshold used in compare_double
+#define DELTA_LONG_DOUBLE   1e-18   // Threshold used in compare_long_double
 
 #include <stdio.h>
 #include <stdbool.h>
@@ -70,7 +71,7 @@ long get_long(const char* msg_fmt, ...);
 /************************************* FLOATING POINT *************************************/
 
 /*
- * These functions compare two floating point values.
+ * These functions compare two floating point values (of types float, double or long double).
  * Return values:
  *  * -1 if x is less than y
  *  * 0 if x equals y
@@ -80,6 +81,7 @@ long get_long(const char* msg_fmt, ...);
  */
 int compare_float(float x, float y);
 int compare_double(double x, double y);
+int compare_long_double(long double x, long double y);
 
 /*
  * These functions parse floating point numbers (of types float, double or long double) stored as
