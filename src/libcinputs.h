@@ -102,8 +102,9 @@ long double parse_long_double(const char* str);
  * message is shown and any other argument is ignored.
  * If no number could be found, 0 is returned and errno is set to EINVAL
  */
-float get_float(const char* msg_fmt, ...);
-double get_double(const char* msg_fmt, ...);
+float get_float(const char* msg_fmt, ...); //TODO
+double get_double(const char* msg_fmt, ...); //TODO
+long double get_long_double(const char* msg, ...); //TODO
 
 /************************************* STRINGS *************************************/
 

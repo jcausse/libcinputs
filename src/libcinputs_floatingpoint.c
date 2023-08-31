@@ -82,6 +82,17 @@ double get_double(const char* msg, ...) {
     return 0.0;
 }
 
+long double get_long_double(const char* msg, ...) {
+    if (msg != NULL && strlen(msg) > 0){
+        va_list ap;
+        va_start(ap, msg);
+        vprintf(msg, ap);
+        va_end(ap);
+    }
+    return 0.0l;
+}
+
+
 /***************************************************************************************************/
 
 int compare_float(float x, float y){
