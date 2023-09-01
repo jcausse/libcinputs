@@ -59,15 +59,17 @@ void get_short_tests();
 void get_int_tests();
 void get_long_tests();
 
-void parse_float_tests();
-void parse_double_tests();
-void parse_long_double_tests();
+void parse_float_tests();           //TODO
+void parse_double_tests();          //TODO
+void parse_long_double_tests();     //TODO
 
-void get_float_tests();
-void get_double_tests();
+void get_float_tests();             //TODO
+void get_double_tests();            //TODO
+void get_long_double_tests();       //TODO
 
 void compare_float_tests();
 void compare_double_tests();
+void compare_long_double_tests();
 
 
 
@@ -90,9 +92,11 @@ int main(){
 
     get_float_tests();
     get_double_tests();
+    get_long_double_tests();
 
     compare_float_tests();
     compare_double_tests();
+    compare_long_double_tests();
 
     puts("************* ALL TESTS PASSED *************");
 
@@ -546,9 +550,32 @@ void get_long_tests(){
     puts("*** All get_long tests passed ***\n");
 }
 
+/************************************* FLOATING POINT *************************************/
+
 /*TODO*/ void parse_float_tests(){
     puts("*** parse_float ***");
     int i = 0;
+
+    assert(compare_float(parse_float("-1.3528"), -1.3528));
+    assert(errno == 0);
+    printf("Test %02d passed\n", ++i);
+
+    assert(compare_float(parse_float("121.8235"), 121.8235));
+    assert(errno == 0);
+    printf("Test %02d passed\n", ++i);
+
+    assert(compare_float(parse_float("-1.3528"), -1.3528));
+    assert(errno == 0);
+    printf("Test %02d passed\n", ++i);
+
+    assert(compare_float(parse_float("-1.3528"), -1.3528));
+    assert(errno == 0);
+    printf("Test %02d passed\n", ++i);
+
+    assert(compare_float(parse_float("-1.3528"), -1.3528));
+    assert(errno == 0);
+    printf("Test %02d passed\n", ++i);
+
 
     puts("*** All parse_float tests passed ***\n");
 }
@@ -581,6 +608,13 @@ void get_long_tests(){
     puts("*** All get_double tests passed ***\n");
 }
 
+/*TODO*/ void get_long_double_tests(){
+    puts("*** get_long_double ***");
+    int i = 0;
+
+    puts("*** All get_long_double tests passed ***\n");
+}
+
 void compare_float_tests(){
     puts("*** compare_float ***");
     int i = 0;
@@ -600,7 +634,7 @@ void compare_float_tests(){
     assert(compare_float(0.1f + 0.2f, 0.3f) == 0);
     printf("Test %02d passed\n", ++i);
 
-    assert(compare_float(0.000000001 + 0.000000002, 0.000000003) == 0);
+    assert(compare_float(0.000000001f + 0.000000002f, 0.000000003f) == 0);
     printf("Test %02d passed\n", ++i);
 
     assert(compare_float(0.1f + 1e-6f, 0.1f) == 1);
@@ -655,3 +689,39 @@ void compare_double_tests(){
     puts("*** All compare_double tests passed ***\n");
 }
 
+void compare_long_double_tests(){
+    puts("*** compare_long_double ***");
+    int i = 0;
+
+    assert(compare_long_double(1.0l, 1.0l) == 0);
+    printf("Test %02d passed\n", ++i);
+
+    assert(compare_long_double(0.1l, 0.1l) == 0);
+    printf("Test %02d passed\n", ++i);
+
+    assert(compare_long_double(2.0l, 1.0l) == 1);
+    printf("Test %02d passed\n", ++i);
+
+    assert(compare_long_double(1.0l, 2.0l) == -1);
+    printf("Test %02d passed\n", ++i);
+
+    assert(compare_long_double(0.1l + 0.2l, 0.3l) == 0);
+    printf("Test %02d passed\n", ++i);
+
+    assert(compare_long_double(0.000000000000000000001l + 0.000000000000000000002l, 0.000000000000000000003l) == 0);
+    printf("Test %02d passed\n", ++i);
+
+    assert(compare_long_double(0.1l + 1e-18l, 0.1l) == 1);
+    printf("Test %02d passed\n", ++i);
+
+    assert(compare_long_double(0.1l, 0.1l + 1e-18l) == -1);
+    printf("Test %02d passed\n", ++i);
+
+    assert(compare_long_double(0.1l + 1e-19l, 0.1l) == 0);
+    printf("Test %02d passed\n", ++i);
+
+    assert(compare_long_double(0.1l, 0.1l + 1e-19l) == 0);
+    printf("Test %02d passed\n", ++i);
+
+    puts("*** All compare_long_double tests passed ***\n");
+}
