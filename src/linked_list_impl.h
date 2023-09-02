@@ -6,6 +6,7 @@
 
 #include <stdlib.h>                 // malloc, free
 #include <errno.h>                  // errno
+#include <stdbool.h>
 
 typedef struct llist_t* llist;      // TAD (Tipo Abstracto de Datos) de lista
 typedef void (* llist_destroy_cb) (void*);  // Callback para la función de destruir lista
@@ -50,7 +51,7 @@ void llist_append(llist lst, void* data);
  * Si reversed = 0, el orden de recorrido es el natural
  * No devuelve nada
 */
-void llist_foreach(llist lst, llist_foreach_cb cb, void* param, int reversed);
+void llist_foreach(llist lst, llist_foreach_cb cb, void* param, bool reversed);
 
 /*
  * Devuelve la cantidad de nodos de la lista

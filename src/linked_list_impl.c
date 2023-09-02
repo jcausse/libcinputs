@@ -80,17 +80,17 @@ void llist_append(llist lst, void* data){
     (lst->size)++;
 }
 
-void llist_foreach(llist lst, llist_foreach_cb cb, void* param, int reversed){
+void llist_foreach(llist lst, llist_foreach_cb cb, void* param, bool reversed){
     if (cb == NULL){
         return;
     }
 
     unsigned int size = lst->size;
-    llist_node_t* node = (reversed == 0 ? lst->first_node : lst->last_node);
+    llist_node_t* node = (reversed ? lst->last_node : lst->first_node);
 
     for (unsigned int i = 0; i < size; i++){
         cb(node->data, param);
-        node = (reversed == 0 ? node->next : node->prev);
+        node = (reversed ? node->prev : node->next);
     }
 }
 
