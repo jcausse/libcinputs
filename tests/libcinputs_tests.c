@@ -63,9 +63,9 @@ void parse_float_tests();
 void parse_double_tests();
 void parse_long_double_tests();
 
-void get_float_tests();             //TODO
-void get_double_tests();            //TODO
-void get_long_double_tests();       //TODO
+void get_float_tests();
+void get_double_tests();
+void get_long_double_tests();
 
 void compare_float_tests();
 void compare_double_tests();
