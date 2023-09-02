@@ -38,13 +38,6 @@ void llist_destroy(llist lst, llist_destroy_cb cb);
 void llist_append(llist lst, void* data);
 
 /*
- * Elimina un nodo de la lista
- * 
- * 
- *
-*/
-
-/*
  * Ejecuta una acción definida por el usuario para cada elemento en la lista
  * Recibe la lista, un callback con la acción a realizar y un parámetro opcional para el callback
  * El ultimo parámetro, reversed, permite recorrer la lista en orden inverso si su valor es distinto de cero
