@@ -103,10 +103,11 @@ long double parse_long_double(const char* str);
  * used in the same way as in printf. If msg_fmt is NULL or an empty string, no
  * message is shown and any other argument is ignored.
  * If no number could be found, 0 is returned and errno is set to EINVAL
+ * errno is set to ERANGE if the read value would cause overflow or underflow.
  */
-float get_float(const char* msg_fmt, ...); //TODO
-double get_double(const char* msg_fmt, ...); //TODO
-long double get_long_double(const char* msg, ...); //TODO
+float get_float(const char* msg_fmt, ...);
+double get_double(const char* msg_fmt, ...);
+long double get_long_double(const char* msg, ...);
 
 /************************************* STRINGS *************************************/
 

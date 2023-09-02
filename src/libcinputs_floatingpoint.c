@@ -4,6 +4,11 @@ enum floating_point_data_types {TYPE_FLOAT, TYPE_DOUBLE, TYPE_LONG_DOUBLE};
 
 static void parse_floating_point (const char* str, void* result, enum floating_point_data_types type);
 static int compare_floating_point_helper(long double x, long double y, long double delta);
+static void get_floating_point_helper(void* result, enum floating_point_data_types type);
+static inline void clear_stdin(){
+    int _rd;
+    while ((_rd = getchar()) && _rd != '\n' && _rd != EOF);
+}
 
 /***************************************************************************************************/
 
@@ -69,7 +74,12 @@ float get_float(const char* msg, ...) {
         vprintf(msg, ap);
         va_end(ap);
     }
-    return 0.0f;
+    float res;
+    get_floating_point_helper((void*) &res, TYPE_FLOAT);
+    if (errno != 0){
+        res = 0.0f;
+    }
+    return res;
 }
 
 double get_double(const char* msg, ...) {
@@ -79,7 +89,12 @@ double get_double(const char* msg, ...) {
         vprintf(msg, ap);
         va_end(ap);
     }
-    return 0.0;
+    double res;
+    get_floating_point_helper((void*) &res, TYPE_DOUBLE);
+    if (errno != 0){
+        res = 0.0;
+    }
+    return res;
 }
 
 long double get_long_double(const char* msg, ...) {
@@ -89,7 +104,37 @@ long double get_long_double(const char* msg, ...) {
         vprintf(msg, ap);
         va_end(ap);
     }
-    return 0.0l;
+    long double res;
+    get_floating_point_helper((void*) &res, TYPE_LONG_DOUBLE);
+    if (errno != 0){
+        res = 0.0l;
+    }
+    return res;
+}
+
+static void get_floating_point_helper(void* result, enum floating_point_data_types type){
+    errno = 0;
+
+    char floating_point_str[50];
+    int read = scanf("%49s", floating_point_str);
+    clear_stdin();
+
+    if (read != 1){
+        errno = EINVAL;
+        return;
+    }
+
+    switch (type){
+        case TYPE_FLOAT:
+            *((float*) result) = parse_float(floating_point_str);
+            break;
+        case TYPE_DOUBLE:
+            *((double*) result) = parse_double(floating_point_str);
+            break;
+        case TYPE_LONG_DOUBLE:
+            *((long double*) result) = parse_long_double(floating_point_str);
+            break;
+    }
 }
 
 
