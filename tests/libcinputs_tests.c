@@ -762,23 +762,119 @@ void parse_long_double_tests(){
     puts("*** All parse_long_double tests passed ***\n");
 }
 
-/*TODO*/ void get_float_tests(){
+void get_float_tests(){
     puts("*** get_float ***");
     int i = 0;
+
+    assert(compare_float(get_float(NULL), 123.03553f) == 0);
+    assert(errno == 0);
+    printf("Test %02d passed\n", ++i);
+
+    assert(compare_float(get_float(NULL), -235.325f) == 0);
+    assert(errno == 0);
+    printf("Test %02d passed\n", ++i);
+
+    assert(compare_float(get_float(NULL), 0.0f) == 0);
+    assert(errno == 0);
+    printf("Test %02d passed\n", ++i);
+
+    assert(compare_float(get_float(NULL), 0.0f) == 0);
+    assert(errno == 0);
+    printf("Test %02d passed\n", ++i);
+
+    assert(compare_float(get_float(NULL), 0.0f) == 0);
+    assert(errno == 0);
+    printf("Test %02d passed\n", ++i);
+
+    assert(compare_float(get_float(NULL), 0.0f) == 0);
+    assert(errno == 0);
+    printf("Test %02d passed\n", ++i);
+
+    assert(compare_float(get_float(NULL), 0.0f) == 0);
+    assert(errno == EINVAL);
+    printf("Test %02d passed\n", ++i);
+
+    assert(compare_float(get_float(NULL), 0.0f) == 0);
+    assert(errno == EINVAL);
+    printf("Test %02d passed\n", ++i);
 
     puts("*** All get_float tests passed ***\n");
 }
 
-/*TODO*/ void get_double_tests(){
+void get_double_tests(){
     puts("*** get_double ***");
     int i = 0;
+
+    assert(compare_double(get_double(NULL), 123.03553253) == 0);
+    assert(errno == 0);
+    printf("Test %02d passed\n", ++i);
+
+    assert(compare_double(get_double(NULL), -235.3256346) == 0);
+    assert(errno == 0);
+    printf("Test %02d passed\n", ++i);
+
+    assert(compare_double(get_double(NULL), 0.0) == 0);
+    assert(errno == 0);
+    printf("Test %02d passed\n", ++i);
+
+    assert(compare_double(get_double(NULL), 0.0) == 0);
+    assert(errno == 0);
+    printf("Test %02d passed\n", ++i);
+
+    assert(compare_double(get_double(NULL), 0.0) == 0);
+    assert(errno == 0);
+    printf("Test %02d passed\n", ++i);
+
+    assert(compare_double(get_double(NULL), 0.0) == 0);
+    assert(errno == 0);
+    printf("Test %02d passed\n", ++i);
+
+    assert(compare_double(get_double(NULL), 0.0) == 0);
+    assert(errno == EINVAL);
+    printf("Test %02d passed\n", ++i);
+
+    assert(compare_double(get_double(NULL), 0.0) == 0);
+    assert(errno == EINVAL);
+    printf("Test %02d passed\n", ++i);
 
     puts("*** All get_double tests passed ***\n");
 }
 
-/*TODO*/ void get_long_double_tests(){
+void get_long_double_tests(){
     puts("*** get_long_double ***");
     int i = 0;
+
+    assert(compare_long_double(get_long_double(NULL), 123.035534635345643l) == 0);
+    assert(errno == 0);
+    printf("Test %02d passed\n", ++i);
+
+    assert(compare_long_double(get_long_double(NULL), -235.32545774574574l) == 0);
+    assert(errno == 0);
+    printf("Test %02d passed\n", ++i);
+
+    assert(compare_long_double(get_long_double(NULL), 0.0l) == 0);
+    assert(errno == 0);
+    printf("Test %02d passed\n", ++i);
+
+    assert(compare_long_double(get_long_double(NULL), 0.0l) == 0);
+    assert(errno == 0);
+    printf("Test %02d passed\n", ++i);
+
+    assert(compare_long_double(get_long_double(NULL), 0.0l) == 0);
+    assert(errno == 0);
+    printf("Test %02d passed\n", ++i);
+
+    assert(compare_long_double(get_long_double(NULL), 0.0l) == 0);
+    assert(errno == 0);
+    printf("Test %02d passed\n", ++i);
+
+    assert(compare_long_double(get_long_double(NULL), 0.0l) == 0);
+    assert(errno == EINVAL);
+    printf("Test %02d passed\n", ++i);
+
+    assert(compare_long_double(get_long_double(NULL), 0.0l) == 0);
+    assert(errno == EINVAL);
+    printf("Test %02d passed\n", ++i);
 
     puts("*** All get_long_double tests passed ***\n");
 }
