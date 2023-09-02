@@ -29,8 +29,8 @@
 
 /************************************* MEMORY MANAGER *************************************/
 
-void libcinputs_init(); //TODO
-void libcinputs_cleanup(); //TODO
+bool libcinputs_init();
+void libcinputs_cleanup();
 
 /************************************* INTEGERS *************************************/
 
