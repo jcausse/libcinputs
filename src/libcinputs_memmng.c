@@ -1,18 +1,29 @@
 #include "libcinputs.h"
+#include "linked_list_impl.h"
 
-static bool _init_done = false;
+static bool libcinputs_init_done = false;
+static llist mem_mng_lst;
 
-void libcinputs_init(){
-    if (_init_done){
-        return;
+bool libcinputs_init(){
+    if (libcinputs_init_done){
+        return false;
     }
-    _init_done = true;
 
+    libcinputs_init_done = true;
+    mem_mng_lst = llist_create();
+    if (mem_mng_lst == NULL){
+        return false;
+    }
+
+    return true;
+}
+
+void libcinputs_lst_cleanup_cb(void* data){
+    free(data);
 }
 
 void libcinputs_cleanup(){
-    if (! _init_done){
-        return;
+    if (libcinputs_init_done) {
+        llist_destroy(mem_mng_lst, libcinputs_lst_cleanup_cb);
     }
-
 }
