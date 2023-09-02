@@ -59,9 +59,9 @@ void get_short_tests();
 void get_int_tests();
 void get_long_tests();
 
-void parse_float_tests();           //TODO
-void parse_double_tests();          //TODO
-void parse_long_double_tests();     //TODO
+void parse_float_tests();
+void parse_double_tests();
+void parse_long_double_tests();
 
 void get_float_tests();             //TODO
 void get_double_tests();            //TODO
@@ -552,44 +552,212 @@ void get_long_tests(){
 
 /************************************* FLOATING POINT *************************************/
 
-/*TODO*/ void parse_float_tests(){
+void parse_float_tests(){
     puts("*** parse_float ***");
     int i = 0;
 
-    assert(compare_float(parse_float("-1.3528"), -1.3528));
+    /*** PARSING TESTS ***/
+
+    assert(compare_float(parse_float("-1.3528"), -1.3528f) == 0);
     assert(errno == 0);
     printf("Test %02d passed\n", ++i);
 
-    assert(compare_float(parse_float("121.8235"), 121.8235));
+    assert(compare_float(parse_float("1.23456"), 1.23456f) == 0);
     assert(errno == 0);
     printf("Test %02d passed\n", ++i);
 
-    assert(compare_float(parse_float("-1.3528"), -1.3528));
+    assert(compare_float(parse_float("-535.234"), 535.234f) == -1);
     assert(errno == 0);
     printf("Test %02d passed\n", ++i);
 
-    assert(compare_float(parse_float("-1.3528"), -1.3528));
+    assert(compare_float(parse_float("535.234"), -535.234f) == 1);
     assert(errno == 0);
     printf("Test %02d passed\n", ++i);
 
-    assert(compare_float(parse_float("-1.3528"), -1.3528));
+    assert(compare_float(parse_float("0.0000"), 0.0f) == 0);
     assert(errno == 0);
     printf("Test %02d passed\n", ++i);
 
+    assert(compare_float(parse_float("-0.0000"), 0.0f) == 0);
+    assert(errno == 0);
+    printf("Test %02d passed\n", ++i);
+
+    assert(compare_float(parse_float("-1.3528ajbfv"), -1.3528f) == 0);
+    assert(errno == 0);
+    printf("Test %02d passed\n", ++i);
+
+    assert(compare_float(parse_float("1.23456r345"), 1.23456f) == 0);
+    assert(errno == 0);
+    printf("Test %02d passed\n", ++i);
+
+    assert(compare_float(parse_float("-535.234.24"), 535.234) == -1);
+    assert(errno == 0);
+    printf("Test %02d passed\n", ++i);
+
+
+
+
+    /*** INVALID STRING TESTS ***/
+
+    assert(parse_float(NULL) == 0.0f);
+    assert(errno == EINVAL);
+    printf("Test %02d passed\n", ++i);
+
+    assert(parse_float("") == 0.0f);
+    assert(errno == EINVAL);
+    printf("Test %02d passed\n", ++i);
+
+    assert(parse_float("This is a test") == 0.0f);
+    assert(errno == EINVAL);
+    printf("Test %02d passed\n", ++i);
+
+    assert(parse_float("abc1.3528") == 0.0f);
+    assert(errno == EINVAL);
+    printf("Test %02d passed\n", ++i);
+
+    assert(parse_float("--2.25") == 0.0f); //Double opposite sign
+    assert(errno == EINVAL);
+    printf("Test %02d passed\n", ++i);
 
     puts("*** All parse_float tests passed ***\n");
 }
 
-/*TODO*/ void parse_double_tests(){
+void parse_double_tests(){
     puts("*** parse_double ***");
     int i = 0;
+
+    /*** PARSING TESTS ***/
+
+    assert(compare_double(parse_double("-1.3528346235"), -1.3528346235) == 0);
+    assert(errno == 0);
+    printf("Test %02d passed\n", ++i);
+
+    assert(compare_double(parse_double("1.23456789123"), 1.23456789123) == 0);
+    assert(errno == 0);
+    printf("Test %02d passed\n", ++i);
+
+    assert(compare_double(parse_double("-535.2343624525"), 535.2343624525) == -1);
+    assert(errno == 0);
+    printf("Test %02d passed\n", ++i);
+
+    assert(compare_double(parse_double("535.2343624525"), -535.2343624525) == 1);
+    assert(errno == 0);
+    printf("Test %02d passed\n", ++i);
+
+    assert(compare_double(parse_double("0.0000000000"), 0.0) == 0);
+    assert(errno == 0);
+    printf("Test %02d passed\n", ++i);
+
+    assert(compare_double(parse_double("-0.0000000000"), 0.0) == 0);
+    assert(errno == 0);
+    printf("Test %02d passed\n", ++i);
+
+    assert(compare_double(parse_double("-1.3528789123ajbfv"), -1.3528789123) == 0);
+    assert(errno == 0);
+    printf("Test %02d passed\n", ++i);
+
+    assert(compare_double(parse_double("1.23456789123r345"), 1.23456789123) == 0);
+    assert(errno == 0);
+    printf("Test %02d passed\n", ++i);
+
+    assert(compare_double(parse_double("-535.23456789123.24"), 535.23456789123) == -1);
+    assert(errno == 0);
+    printf("Test %02d passed\n", ++i);
+
+
+
+
+    /*** INVALID STRING TESTS ***/
+
+    assert(parse_double(NULL) == 0.0);
+    assert(errno == EINVAL);
+    printf("Test %02d passed\n", ++i);
+
+    assert(parse_double("") == 0.0);
+    assert(errno == EINVAL);
+    printf("Test %02d passed\n", ++i);
+
+    assert(parse_double("This is a test") == 0.0);
+    assert(errno == EINVAL);
+    printf("Test %02d passed\n", ++i);
+
+    assert(parse_double("abc1.3528") == 0.0);
+    assert(errno == EINVAL);
+    printf("Test %02d passed\n", ++i);
+
+    assert(parse_double("--2.25") == 0.0); //Double opposite sign
+    assert(errno == EINVAL);
+    printf("Test %02d passed\n", ++i);
 
     puts("*** All parse_double tests passed ***\n");
 }
 
-/*TODO*/ void parse_long_double_tests(){
+void parse_long_double_tests(){
     puts("*** parse_long_double ***");
     int i = 0;
+
+    /*** PARSING TESTS ***/
+
+    assert(compare_double(parse_double("-1.35283462352436346"), -1.35283462352436346l) == 0);
+    assert(errno == 0);
+    printf("Test %02d passed\n", ++i);
+
+    assert(compare_double(parse_double("1.234567891235345345"), 1.234567891235345345l) == 0);
+    assert(errno == 0);
+    printf("Test %02d passed\n", ++i);
+
+    assert(compare_double(parse_double("-535.234362452575445"), 535.234362452575445l) == -1);
+    assert(errno == 0);
+    printf("Test %02d passed\n", ++i);
+
+    assert(compare_double(parse_double("535.234362452575445"), -535.234362452575445l) == 1);
+    assert(errno == 0);
+    printf("Test %02d passed\n", ++i);
+
+    assert(compare_double(parse_double("0.000000000000000000"), 0.0l) == 0);
+    assert(errno == 0);
+    printf("Test %02d passed\n", ++i);
+
+    assert(compare_double(parse_double("-0.000000000000000000"), 0.0l) == 0);
+    assert(errno == 0);
+    printf("Test %02d passed\n", ++i);
+
+    assert(compare_double(parse_double("-1.3528789123234634ajbfv"), -1.35287891232346343l) == 0);
+    assert(errno == 0);
+    printf("Test %02d passed\n", ++i);
+
+    assert(compare_double(parse_double("1.2345678912963756785r345"), 1.2345678912963756785l) == 0);
+    assert(errno == 0);
+    printf("Test %02d passed\n", ++i);
+
+    assert(compare_double(parse_double("-535.2345678912334633.24"), 535.2345678912334633l) == -1);
+    assert(errno == 0);
+    printf("Test %02d passed\n", ++i);
+
+
+
+
+    /*** INVALID STRING TESTS ***/
+
+    assert(parse_double(NULL) == 0.0l);
+    assert(errno == EINVAL);
+    printf("Test %02d passed\n", ++i);
+
+    assert(parse_double("") == 0.0l);
+    assert(errno == EINVAL);
+    printf("Test %02d passed\n", ++i);
+
+    assert(parse_double("This is a test") == 0.0l);
+    assert(errno == EINVAL);
+    printf("Test %02d passed\n", ++i);
+
+    assert(parse_double("abc1.3528") == 0.0l);
+    assert(errno == EINVAL);
+    printf("Test %02d passed\n", ++i);
+
+    assert(parse_double("--2.25") == 0.0l); //Double opposite sign
+    assert(errno == EINVAL);
+    printf("Test %02d passed\n", ++i);
 
     puts("*** All parse_long_double tests passed ***\n");
 }
